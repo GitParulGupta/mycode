@@ -1,0 +1,31 @@
+BS - works for a sorted space only.
+
+Time complexity
+Lets say array size = 32
+at each step 32-->16-->8-->4-->2-->1 ===> 2^5
+therefore time complexity = O (log n) --> where log is of base 2
+
+Now not necessary search space is limited. it could be like high = Integer.MAX_VALUE;
+
+mid at some point could be (Integer.MAX_VALUE + Integer.MAX_VALUE)/2; --> Overflow situation
+To handle this mid = low + (high-low)/2;
+
+LowerBound = smallest index i such that array[i]>=n
+Ex: array = {3, 5,8,11,19, 19}
+n=8 lowerBound =  2
+n=12 lowerBound = 4
+n= 20 lowerBound = 6
+O(log to base2 n)
+
+UpperBound = smallest index i such that array[i]>n
+Ex: array = {3, 5,8,11,19, 19}
+n=8 upperBound =  3
+n=12 upperBound = 4
+n= 20 upperBound = 6
+O(log to base2 n)
+
+Another category of examples -
+Binary Search on answers
+Example: Sqrt using BS
+
+

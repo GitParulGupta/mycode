@@ -1,0 +1,120 @@
+In any coding interview drive the solution, don't jump to solution
+
+Brute Force
+|
+Better Solution
+|
+Optimal Solution
+
+-- Maths
+Integer.MIN_VALUE
+Integer.MAX_VALUE
+Math.min()
+Math.max()
+--The logarithmic base 10 of a positive integers gives the number of digits in n. We add 1 to the result to ensure that the count is correct even for numbers that are powers of 10.
+return (int)(log10(n)+1); //Math.log10
+
+
+-- Important search algos
+1. Linear Search
+2. Binary Search
+3. Searching majority element -> Moore's Voting element
+
+--Important sorting algos
+1. Dutch National Flag algo
+2.
+
+-- Important operations arrays -
+1. Reverse array - Collections.reverse(Arrays.asList(a)); or ArrayUtils.reverse(array);
+2. To print elements of array --Arrays.toString(array)
+3.
+
+-- Important operation Lists -
+1. add(int x)
+2. get(index)
+3. getFirst()
+4. getLast()
+5. remove()
+6. size()
+7. Create new list => List<Integer> l = List.of(input1, input2);
+8. List<Integer> l = new ArrayList<Integer>
+9. List to Set in java 8 - l.stream().collect(Collectors.toSet());
+10. List to Map in java 8 - l.stream().collect(Collectors.toMap(Function.identity(), Function.identity()));
+11. List to String in java 8 - l.stream().map(String::valueOf).collect(Collectors.joining(", "));
+12. iterate over list in java 8 - l.forEach(System.out::println);
+13. List to array in java 8 - l.toArray(new Integer[0]);
+14. iterator Iterator<Integer> i = elementList.iterator();
+12. Sort list in java 8 - l.sort(Comparator.naturalOrder());
+13. Sort list of lists in java 8 - List<List<Integer>> l=l1.stream().sorted(new Comparator<List<Integer>>() {
+                                               @Override
+                                               public int compare(List<Integer> o1, List<Integer> o2) {
+                                                   if(!Objects.equals(o1.get(0), o2.get(0))){
+                                                       return o1.get(0).compareTo(o2.get(0));
+                                                   }else{
+                                                       return o1.get(1).compareTo(o2.get(1));
+                                                   }
+                                               }
+                                           }).toList();
+
+                                       OR
+                                     l.sort(Comparator.comparing(List::getFirst));
+14.
+
+--Important operations Strings -
+1. String to char array - char[] c = s.toCharArray();
+2. String to int - Integer.parseInt(s);
+3. Check if string is palindrome - s.equals(new StringBuilder(s).reverse().toString());
+4. String to List - Arrays.asList(s.split(","));
+5. String to List in java 8 - Arrays.stream(s.split(",")).collect(Collectors.toList());
+6. Check if String is empty -word.isEmpty()
+7. String to lower or upper case - word.toLowerCase() or word.toUpperCase()
+
+-- Approaches to solve questions for arrays
+1. Sum of first N numbers - eg - missingNumber
+2. Xor elements eg- missingNumber, find unique element where other elements occur twice
+3. Sliding Window
+4. 2 pointer
+
+-- Recursion
+1. When a function calls itself until specified condition is met, it is called recursion. Each function call creates a new stack frame, and the function continues to execute until it reaches a base case or an error occurs.
+   - Base case is the condition that stops the recursion.
+   - Recursive case is the part of the function that calls itself with modified parameters.
+   - Example: Factorial of a number, Fibonacci series, etc.
+2. Infinite recursion occurs when the base case is not defined or not reachable - leads to stack overflow exception.
+3. Recursion Tree - A tree structure where each node represents a function call, and the edges represent the recursive calls made by that function.
+4. Recursion vs Iteration - Recursion is often more elegant and easier to read, but it can be less efficient due to the overhead of function calls and stack space. Iteration is usually more efficient in terms of time and space complexity.
+5. 2 ways to write recursion:
+   - Parameterized recursion: where the function takes parameters and modifies them in each recursive call.
+    - Non-parameterized recursion: function keeps track to state using return values.
+    Example: Sum of first N natural numbers.
+
+-- Hashing
+1. Used to map counts of elements in an array or list.
+   Example: {1,2,3,2,1} ==> n= 5, we declare an array (hash) with max capacity of n+1. for each element i in the array, hash[i]=hash[i]+1;
+   - If hash array declared inside main, max size of array can be 10^6 for int. for boolean its 10^7.
+   - if size of array > 10^6, then use HashMap or HashSet. TC - O(1) for operations in avg and best case and O(n) in worst.
+         - If you need elements to be sorted based on key values, use TreeMap. (log(n) TC for operations)s
+           If you need to preserve the order in which elements were inserted, use LinkedHashMap.
+           If you are using enum keys, use EnumMap.
+           If you need custom sorting, use a Stream and then collect into a LinkedHashMap.
+           If you need bidirectional iteration, use OrderedMap from Apache Commons Collections.
+   - If hash array declared as a global variable, max size of array can be 10^7 for int. For boolean its 10^8.
+2. HashMap - A data structure that maps keys to values, allowing for fast retrieval of values based on their keys. -> nlogn TC
+    - Example: HashMap<Integer, Integer> map = new HashMap<>();
+    - Operations: put(key, value), get(key), remove(key), containsKey(key), size(), isEmpty(), clear().
+    - Iterating over a HashMap: for (Map.Entry<Integer, Integer> entry : map.entrySet()) { ... }
+3. HashSet - A data structure that stores unique elements, allowing for fast membership testing and insertion. -> nlogn TC
+    - Example: HashSet<Integer> set = new HashSet<>();
+    - Operations: add(element), remove(element), contains(element), size(), isEmpty(), clear().
+    - Iterating over a HashSet: for (Integer element : set) { ... }
+4. Character Hashing - Used to map characters to their ASCII values or to count occurrences of characters in a string.
+    - Example: int[] hash = new int[256]; // for ASCII characters - 'a'--> 97 to 'z' --> 122 & 'A' --> 65 to 'Z' --> 90
+    - Lets assume array has only lowercase characters, then we can use a smaller array of size 26.
+            - Example: int[] hash = new int[26]; // for lowercase characters
+            - To map a character c to its index in the array, use hash[c - 'a'].
+    - For each character c in the string, hash[c]++;
+    - To check if a character exists, use hash[c] > 0.
+5. Collisions - Handling collisions in array - Division method, Multiplication method, and Universal hashing.
+    - Division method: hash(key) = key % size_of_array - if still collision occurs, use linear probing or chaining.
+    - Multiplication method: hash(key) = floor(size_of_array * (key * A % 1))
+    - Universal hashing: Use a random function to map keys to indices in the array.

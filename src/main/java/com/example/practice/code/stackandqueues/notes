@@ -1,0 +1,55 @@
+Stack & Queues
+
+Stack --> LIFO
+In java
+Stack<Integer> s = new Stack<>();
+s.push(int n);
+s.pop();
+s.peek();
+s.size();
+
+Queue<Integer> q = new PriorityQueue<>();
+or
+Queue<Integer> q = new LinkedList<>();
+or
+ArrayDeque
+or
+ConcurrentLinkedQueue (for thread-safe operations)
+
+q.peek();
+q.add();
+q.remove(); -- if list
+q.pop(); -- if PQ
+
+Iterator iterator = pq.iterator();
+while (iterator.hasNext()) {
+      System.out.print(iterator.next() + " ");
+}
+
+
+Prefix Infix and Postfix
+
+Infix
+(p+q)*(m-n)
+
+Prefix
+*+pq-mn
+
+Postfix
+pq+mn-*
+
+
+PriorityQueue
+Queue<Integer> q = new PriorityQueue<>();
+Queue<Integer> q1 = new PriorityQueue<>(Collections.reverseOrder());
+ q1.add(5)
+ q1.remove()
+ q1.peek();
+         q1.element(); // throws exception if queue is empty
+         q1.offer(6);// helpful for restricted size queue. Resizing
+         q1.contains(4);
+
+
+Monotonic Stack
+- Elements are in increasing or decreasing order
+- Used to find the next greater or smaller element (NGE/NSE)
