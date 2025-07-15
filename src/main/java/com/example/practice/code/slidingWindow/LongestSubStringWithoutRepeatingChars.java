@@ -34,11 +34,12 @@ public class LongestSubStringWithoutRepeatingChars {
         int maxLen = 0;
 
         while(j<s.length()){
-            if(charSet.contains(s.charAt(j))){
-                while(charSet.contains(s.charAt(j))){
-                    charSet.remove(s.charAt(i));
-                    i++;
-                }
+            /*if(charSet.contains(s.charAt(j))){
+
+            }*/
+            while(charSet.contains(s.charAt(j))){
+                charSet.remove(s.charAt(i));
+                i++;
             }
             int length = j-i+1;
             if(length>maxLen){
