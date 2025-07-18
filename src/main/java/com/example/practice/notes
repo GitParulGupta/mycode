@@ -73,6 +73,7 @@ return (int)(log10(n)+1); //Math.log10
 1. Sum of first N numbers - eg - missingNumber
 2. Xor elements eg- missingNumber, find unique element where other elements occur twice
 3. Sliding Window
+    -  In sliding window, if any char hash map is required, try to go by hash[26] array s.t. any hash[s.charAt(i)-'A]
 4. 2 pointer
 
 -- Recursion
