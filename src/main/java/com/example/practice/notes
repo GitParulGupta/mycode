@@ -6,6 +6,10 @@ Better Solution
 |
 Optimal Solution
 
+--- Java 17
+Pair class - import javafx.util.Pair;
+Pair<Integer, Integer> pair = new Pair<>(1, 2);
+
 -- Maths
 Integer.MIN_VALUE
 Integer.MAX_VALUE
@@ -37,6 +41,7 @@ return (int)(log10(n)+1); //Math.log10
 5. remove()
 6. size()
 7. Create new list => List<Integer> l = List.of(input1, input2);
+7.1. Create a new List from an existing List - List<Integer> l = new ArrayList<>(existingList);
 8. List<Integer> l = new ArrayList<Integer>
 9. List to Set in java 8 - l.stream().collect(Collectors.toSet());
 10. List to Map in java 8 - l.stream().collect(Collectors.toMap(Function.identity(), Function.identity()));
@@ -68,6 +73,11 @@ return (int)(log10(n)+1); //Math.log10
 5. String to List in java 8 - Arrays.stream(s.split(",")).collect(Collectors.toList());
 6. Check if String is empty -word.isEmpty()
 7. String to lower or upper case - word.toLowerCase() or word.toUpperCase()
+8. Sort characters of String - char[] arr = s.toCharArray();
+                                      // Sort the character array
+                                      Arrays.sort(arr);
+                                      // Convert sorted character array back to string
+                                      s = new String(arr);
 
 -- Approaches to solve questions for arrays
 1. Sum of first N numbers - eg - missingNumber
