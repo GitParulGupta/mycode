@@ -1,3 +1,11 @@
+Practice Resources -
+https://neetcode.io/practice
+https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2
+Heap --> https://www.youtube.com/watch?v=hW8PrQrvMNc&list=PL_z_8CaSLPWdtY9W22VjnPxG30CXNZpI9
+https://www.youtube.com/watch?v=nDswg13hZ9o&list=PLLhBy6YSIT0ANaihpjwDBSBju0qUZ82SK&index=2
+
+**********
+
 In any coding interview drive the solution, don't jump to solution
 
 Brute Force
@@ -129,3 +137,34 @@ return (int)(log10(n)+1); //Math.log10
     - Division method: hash(key) = key % size_of_array - if still collision occurs, use linear probing or chaining.
     - Multiplication method: hash(key) = floor(size_of_array * (key * A % 1))
     - Universal hashing: Use a random function to map keys to indices in the array.
+
+
+
+-- Heap
+- For question related to heap, implementation using stack. Look for keywords K and smallest/largest
+- 2 types of heaps:
+    - Min Heap - The smallest element is at the top. K+largest in keywords
+    - Max Heap - The largest element is at top. K + smallest in keywords
+- all questions basically of sorting. nlogn complexity
+- Heap is of fixed size k. Complexity is nlogk
+- Ex: Kth smallest element
+    - ar[7,10,4,3,20,15]
+    - k = 3
+    - we need to find 3rd smallest element
+    - Create a max heap of size k - max element at top
+    - option 1 => srt the array and return ar[k-1] but tiome complexity is nlogn
+    - option 2 => heap ->
+        - Create a max heap of size k
+        - Insert first k elements into the heap
+        - For each remaining element in the array, if it is smaller than the top of the heap, replace the top with the new element and re-heapify(Arrange itself).
+        - After processing all elements, the root of the heap will be the kth smallest element.
+- Defining Heaps
+    - minHeap --> PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+    - maxHeap --> PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+                                                or
+                  PriorityQueue<Integer> maxHeap = new PriorityQueue<>(K, (o1,o1)->o2-o1); //here k is the initial heap capacity and comparator sorts elements in reverse order
+- Common heap operations:
+    - add: O(log n)
+    - poll: O(log n)
+    - peek (get the top element): O(1)
+    - size: O(n)

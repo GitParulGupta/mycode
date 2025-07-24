@@ -17,7 +17,7 @@ public class LongestConsecutiveSubsequence {
 
     public int betterSolution(int[] a){
 
-        if(a.length==1){
+        if(a.length<=1){
             return a.length;
         }
 
@@ -42,6 +42,11 @@ public class LongestConsecutiveSubsequence {
     }
 
     public int optimalSolution(int[] a){
+
+        if(a.length<=1){
+            return a.length;
+        }
+
         Set<Integer> elementSet = new HashSet<>();
         for (int i:a){
             elementSet.add(i);
