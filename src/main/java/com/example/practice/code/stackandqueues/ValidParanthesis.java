@@ -3,6 +3,30 @@ package com.example.practice.code.stackandqueues;
 import java.util.Stack;
 
 public class ValidParanthesis {
+
+    //valid only if single Type of braces
+    public boolean isValidOptionArray(String s){
+        int i = 0;
+        int count = 0;
+
+        while(i<s.length()){
+            if(s.charAt(i)=='('){
+                count++;
+            }else {
+                count--;
+                if(count<0){
+                    return false;
+                }
+            }
+            i++;
+        }
+        if(count==0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public boolean isValid(String s) {
 
         int i=0;

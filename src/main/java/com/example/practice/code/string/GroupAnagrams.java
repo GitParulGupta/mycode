@@ -38,12 +38,12 @@ public class GroupAnagrams {
         Map<String,List<String>> resultMap = new HashMap<>();
 
         for(WordPair p:pairList){
-            if(resultMap.containsKey(p.getSortedWord())){
-                List<String> temp = new ArrayList<>(resultMap.get(p.getSortedWord()));
-                temp.add(p.getOriginalWord());
-                resultMap.put(p.getSortedWord(),temp);
+            if(resultMap.containsKey(p.sortedWord())){
+                List<String> temp = new ArrayList<>(resultMap.get(p.originalWord()));
+                temp.add(p.originalWord());
+                resultMap.put(p.sortedWord(),temp);
             }else{
-                resultMap.put(p.getSortedWord(),List.of(p.getOriginalWord()));
+                resultMap.put(p.sortedWord(),List.of(p.originalWord()));
             }
         }
 
@@ -68,19 +68,5 @@ public class GroupAnagrams {
 }
 
 
-class WordPair{
-
-    String originalWord;
-    String sortedWord;
-    WordPair(String originalWord1, String sortedWord1){
-        this.originalWord = originalWord1;
-        this.sortedWord = sortedWord1;
-    }
-
-    String getOriginalWord(){
-        return this.originalWord;
-    }
-    String getSortedWord(){
-        return this.sortedWord;
-    }
+record WordPair(String originalWord, String sortedWord){
 }
