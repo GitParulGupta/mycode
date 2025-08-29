@@ -168,3 +168,23 @@ return (int)(log10(n)+1); //Math.log10
     - poll: O(log n)
     - peek (get the top element): O(1)
     - size: O(n)
+
+-- Binary Trees
+- Binary Tree is a data structure where each node has at most two children, referred to as the left child and the right child.
+- Head of the tree is the root node.
+- Leaf nodes are nodes that do not have any children.
+- Subtree is a tree formed by a node and all its descendants.
+- Ancestor of a node is any node on the path from the root to that node.
+- 5 types of binary trees:
+    1. Full Binary Tree: Every node has either 0 or 2 children.
+    2. Complete Binary Tree: All levels are completely filled except possibly the last level, which is filled from left to right.
+    3. Perfect Binary Tree: All internal nodes have two children and all leaf nodes are at the same level.
+    4. Balanced Binary Tree: The height of the left and right subtrees of any node differ by at most one. - height can be a max of log(n) for balanced tree. ex: nodes = 8 ==> height --> at max 3
+    5. Degenerate (or pathological) Tree: Each parent node has only one child -like a linked list.
+- Tree Traversal:
+    1. Depth-First Search (DFS):
+        - Pre-order: Visit the root, then the left subtree, and finally the right subtree. -- root, left, right
+        - In-order: Visit the left subtree, then the root, and finally the right subtree. - left, root, right
+        - Post-order: Visit the left subtree, then the right subtree, and finally the root. --left,right, root
+    2. Breadth-First Search (BFS):
+        - Level-order: Visit all nodes at the present depth level before moving on to nodes at
