@@ -187,4 +187,18 @@ return (int)(log10(n)+1); //Math.log10
         - In-order: Visit the left subtree, then the root, and finally the right subtree. - left, root, right
         - Post-order: Visit the left subtree, then the right subtree, and finally the root. --left,right, root
     2. Breadth-First Search (BFS):
-        - Level-order: Visit all nodes at the present depth level before moving on to nodes at
+        - Level-order: Visit all nodes at the present depth level before moving on to nodes at the next depth level.
+
+-- Binary Search Trees (BST):
+- A binary tree where for each node, the left subtree contains only nodes with values less than the node's value, and the right subtree contains only nodes with values greater than the node's value.
+- Entire left sub tree should be a BST and entire right sub tree should be a BST
+- If duplicates are allowed condition is modified to left subtree contains nodes with values less than or equal to the node's value && right subtree contains nodes with values greater than or equal to the node's value.
+   - In ideal case nodes are not duplicates
+- Height of BST is O(log n) in average case and O(n) in worst case (when the tree becomes skewed/degenrate trees).
+- Common operations:
+    - Search: O(h) where h is the height of the tree.
+    - Insertion: O(h)
+    - Deletion: O(h)
+    - Traversal: O(n)
+
+
