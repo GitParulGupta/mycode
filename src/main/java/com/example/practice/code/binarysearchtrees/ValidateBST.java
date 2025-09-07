@@ -33,6 +33,20 @@ public class ValidateBST {
         return nodes;
     }
 
+    public boolean solutionOptimal(TreeNode root){
+        long min = Long.MIN_VALUE;
+        long max = Long.MAX_VALUE;
+        return isValidBST(root, min, max);
+    }
+
+    private boolean isValidBST(TreeNode root, long min, long max) {
+        if(root==null) return true;
+
+        if(root.data<=min || root.data>=max) return false;
+
+        return isValidBST(root.left,min, root.data) && isValidBST(root.right, root.data, max);
+    }
+
     public static void main(String[] args) {
         /**
          *          4
@@ -45,7 +59,7 @@ public class ValidateBST {
         /**
          *          4
          *      2      7
-         *   8    3  6    1
+         *   8    3  6    9
          */
 
         TreeNode root1 = new TreeNode(4,new TreeNode(2,new TreeNode(8),new TreeNode(3)),new TreeNode(7,new TreeNode(6),new TreeNode(1)));
@@ -53,6 +67,8 @@ public class ValidateBST {
         ValidateBST obj = new ValidateBST();
 
         System.out.println("IS BST: "+obj.validateBST(root));
-        System.out.println("IS BST: "+obj.validateBST(root1));
+        System.out.println("IS BST optimal: "+obj.solutionOptimal(root));
+        System.out.println("IS BST 2: "+obj.validateBST(root1));
+        System.out.println("IS BST 2 optimal: "+obj.solutionOptimal(root1));
     }
 }

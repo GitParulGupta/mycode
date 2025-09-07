@@ -202,3 +202,81 @@ return (int)(log10(n)+1); //Math.log10
     - Traversal: O(n)
 
 
+-- Graphs
+- A graph is a data structure that consists of a set of nodes (or vertices) and a set of edges that connect pairs of nodes.
+- Types of Graphs:
+    1. Directed Graph (Digraph): Edges have a direction, going from one vertex to another. All edges are directed. Can be bidirectional edges as well
+            X --> X
+            ^
+            |
+            X
+    2. Undirected Graph: Edges do not have a direction; they connect two vertices bidirectionally.
+        - A BT is also an undirected graph
+        -   X -- X
+            | /  |
+            X
+    3. Cyclic Graph: A graph that contains at least one cycle (a path that starts and ends at the same vertex). It may be directed or undirected.
+    4. Acyclic Graph: A graph that does not contain any cycles. It may be directed or undirected.
+        - DAG - Directed Acyclic Graph
+- Path:Contain lot of nodes and vertices and each of them are reachable from one another
+- Degrees in Graphs directed and undirected:
+    - Undirected Graph:
+        - Degree of a vertex: Number of edges connected to the vertex.
+        - Total degree of graph = 2 * number of edges
+    - Directed Graph:
+        - In-degree: Number of edges directed towards a vertex.
+        - Out-degree: Number of edges directed away from a vertex.
+        - Total degree of graph = 2 * number of edges
+- Edge Weights:
+    - Unweighted Graph: All edges are considered to have the same weight or cost i.e. unit weights i.e. 1.
+    - Weighted Graph: Each edge has an associated weight or cost, which can represent distance, time, or any other metric.
+
+- Graph Representation:
+    1. Adjacency Matrix: A 2D array where the cell at row i and column j indicates the presence (and possibly weight) of an edge between vertex i and vertex j.
+        - Space Complexity: O(V^2) where V is the number of vertices.
+        - Time Complexity: O(1) for checking the existence of an edge, O(V) for finding all neighbors of a vertex.
+    2. Adjacency List: An array of lists where each index represents a vertex, and the list at that index contains the neighbors of that vertex.
+        - Space Complexity: O(V + E) where V is the number of vertices and E is the number of edges.
+        - Time Complexity: O(V) for checking the existence of an edge, O(k) for finding all neighbors of a vertex, where k is the number of neighbors.
+- Visted Array - boolean[] visited = new boolean[V]; // where V is the number of vertices in the graph
+            for(int i=0;i<V;i++){
+                visited[i] = false;
+            }
+            //on visiting a node
+            visited[node] = true;
+            //Traversal algo
+            for(int neighbor : adj.get(node)){
+                if(!visited[neighbor]){
+                    //visit the neighbor
+                }
+            }
+- Common Graph Algorithms:
+    1. Depth-First Search (DFS): Explores as far as possible along each branch before backtracking. Can be implemented using recursion or a stack.
+        - Time Complexity: O(V + E)
+        - Space Complexity: O(V) for the recursion stack or explicit stack.
+    2. Breadth-First Search (BFS): Explores all neighbors at the present depth level before moving on to nodes at the next depth level. Implemented using a queue.
+        - Time Complexity: O(V + E)
+        - Space Complexity: O(V) for the queue.
+        - Also called Level wise traversal
+        - start node is at level 0, its neighbors are at level 1 (distance from start node), their unvisited neighbors are at level 2, and so on.
+    3. Dijkstra's Algorithm: Finds the shortest path from a source vertex to all other vertices in a weighted graph with non-negative weights.
+        - Time Complexity: O((V + E) log V) using a priority queue.
+        - Space Complexity: O(V) for the distance array and priority queue.
+    4. Bellman-Ford Algorithm: Finds the shortest path from a source vertex to all other vertices in a weighted graph, even with negative weights.
+        - Time Complexity: O(V * E)
+        - Space Complexity: O(V) for the distance array.
+    5. Floyd-Warshall Algorithm: Finds shortest paths between all pairs of vertices in a weighted graph.
+        - Time Complexity: O(V^3)
+        - Space Complexity: O(V^2) for the distance matrix.
+    6. Topological Sort: Orders the vertices of a directed acyclic graph (DAG) such that for every directed edge (u, v), vertex u comes before v in the ordering. Can be implemented using DFS or Kahn's algorithm (BFS).
+        - Time Complexity: O(V + E)
+        - Space Complexity: O(V) for the stack or queue and in-degree array.
+    7. Union-Find (Disjoint Set Union - DSU): A data structure that keeps track of elements partitioned into disjoint sets, supporting union and find operations.
+        - Time Complexity: O(α(n)) per operation, where α is the inverse Ackermann function.
+        - Space Complexity: O(n) for the parent and rank arrays.
+    8. Prim's Algorithm: Finds the minimum spanning tree (MST) of a weighted undirected graph. It starts from an arbitrary vertex and grows the MST by adding the smallest edge that connects a vertex in the MST to a vertex outside the MST.
+        - Time Complexity: O((V + E) log V) using a priority queue.
+        - Space Complexity: O(V) for the key, parent, and inMST arrays.
+    9. Kruskal's Algorithm: Finds the minimum spanning tree (MST) of a weighted undirected graph by sorting all edges and adding them one by one, ensuring no cycles are formed using the union-find data structure.
+        - Time Complexity: O(E log E) or O(E log V) using union-find.
+        - Space Complexity: O(V) for the parent and rank arrays in union-find.
