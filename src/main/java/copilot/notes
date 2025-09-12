@@ -1,0 +1,19 @@
+Intellij
+--> add plugin for copilot from settings --> plugins --> marketplace --> search for copilot --> install
+--> restart intellij
+--> login to github account
+--> create a new java project
+
+--> copilot suuggestions--> ghost code
+--> some times copilot has multiple suggesstions - to navigate through suggesstions  - Alt + [ or Alt + ]
+--> to accept the suggestion - Tab
+--> to accept one word at a time ctrl + right arrow
+--> to accept one line at a time ctrl + alt + right arrow
+--> to see all the suggestions - Ctrl + Enter
+
+-- we can write comments on the file to generate the code suggesstions by copilot
+
+--ctrl+shift+c for opening copilot chat
+--Agent for editing the class
+
+-- / commands in github copilot chat helps

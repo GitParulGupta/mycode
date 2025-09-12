@@ -1,4 +1,4 @@
-package java.patternmatching;
+package javaFeatures.patternmatching;
 
 /**
  * Pattern matching for a switch in Java is a powerful feature that was introduced in Java 14.

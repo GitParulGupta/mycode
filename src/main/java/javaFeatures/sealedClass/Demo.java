@@ -1,4 +1,4 @@
-package java.sealedClass;
+package javaFeatures.sealedClass;
 
 /**
  * Sealed Class
