@@ -33,6 +33,27 @@ public class SecondLargestElement {
         return secLargest;
     }
 
+    //sceanrio where we have duplicates and negative values in the array
+    //return -1 if no sec largest value exists
+    //Companies - Oracle
+    public int findSecondLargestNegativeValues(List<Integer> a){
+        int largest = Integer.MIN_VALUE;
+        int secLargest = Integer.MIN_VALUE;
+
+        for (Integer integer : a) {
+            if (integer > largest) {
+                secLargest = largest;
+                largest = integer;
+            } else if (integer > secLargest && integer!=largest) {
+                secLargest = integer;
+            }
+        }
+
+        if(secLargest==Integer.MIN_VALUE) return -1;
+
+        return secLargest;
+    }
+
     public static void main(String[] args) {
         List<Integer> input1 = List.of(1,2,4,7,7,5);
         List<Integer> input2 = List.of(1,7,7,7,7,7);

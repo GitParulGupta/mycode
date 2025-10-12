@@ -1,0 +1,439 @@
+length vs length()
+length -- length of array
+length() -- length of string
+
+anonymous arrays --> w/o specifying name -- new int[]{10,20,40}
+
+array declarations allowed
+String[] s = new String[4];
+Object[] o = new String[3];
+Runnable[] r = new Runnable[];
+r[0] = new Thread(); //Interface type arrays can contain its implementation class objects
+--------------
+Types of variables:
+1. Based on value representation:
+1.1 Primitive variables
+1.2. Referenced variables
+
+2. based on declaration & behaviour
+2.1. Instance -
+scope same as object.
+stored in heap memory.
+cannot be accessed from static area.
+jvm provides default values.
+also called object level variables/attributes
+with each object, if any static values associated in class, copy of static variable is created
+
+2.2. Static -
+value of object does not change from object to object
+single copy of object shared.
+scope of static variable same as scope of class
+
+Insance and static is not thread safe
+
+2.3. Local
+- temporary variables ~ stack variables ~ automatic variables
+- jvm wont povide default values
+- scope is local to the block
+-- applicable modifier --> final else compile time error
+
+--------------
+var-args - variable number of arguments in methods
+void m1(int... x){
+}
+--------------
+main method
+class contains main method or not, Compile time no error
+If jVM does not find main method, it will throw No Such Method Error: Main
+
+public --> method can be called from anywhere
+static --> withotu creating object
+void --> no return type
+main --> name of runnable method identified by JVM
+
+main is static method - cannot be overridden
+-------------
+
+To print any statement - main method is compulsory after version 1.7
+
+------------
+int, long, byte, short - no representation of infinity
+float, double - representation of infinity - POSITIVE_INFINITY and NEGATIVE_INFINITY
+--------------
+String concatenation operator (+)
+if String encountered, then concat
+Example: String ab = "abcd";
+int a = 10;
+int b = 20;
+sop(a+b+ab); //30abcd
+sop(ab+a+b);//abcd1020
+----------------
+Equality operator -- applies to all primitive data types
+Difference between == & equals()
+== reference comparison
+equals() content comparison
+
+example: 2 strings s2 and s1, s1==s2 // false s1.equlas(s2) // true
+
+-------------------
+new vs newInstance()
+new -- create an object of class
+newInstance -- create object of class if name of class is unknown -- Object o = Class.forName(args[0]).newInstance();
+
+------------------
+NoClassDefinitionFoundError vs ClassNotFoundException
+NoClassDefinitionFoundError - while using new operator - if class file for class is not available
+ClassNotFoundException - while using newInstance() - at run time .class file not found.
+
+------------------
+Iterable interface -
+-- contains only 1 method - iterator() --> public Iterator iterator()
+
+----
+access modifiers - private public protected default
+
+final modifier - applicable on classes and methids and variables
+
+final method - method cannot be overridden
+final class - class cannot be extended - inside this class every method is also final
+final variables - one value is assigned, it cannot be modified
+final static variables - values dont change from object to object
+
+abstract method - only declaration no definition
+abstract class - not allowed to create object
+
+-------------------
+Marker Interface
+does not contain any methods
+ex: Serializable, Cloneable, RandomAccess, SingleThreadModel
+
+---------------
+Role of constructor -
+To initialize the object not create the object
+-- once the object is created, then constructor automatically initialise the object
+
+------------------------------------------
+__________________________________________
+OOPS Concepts -
+
+Data Hiding - by declaring the variable as private, data hiding is achieved.
+Abstraction - hiding details and showing only relevant information. By using interface and abstract class
+Encapsulation - binding data member and behaviour in a single class. A class is tightly encapsulated if all members of class marked as private
+Inheritance - is-a relationship
+EX:
+class C extends P
+C has method m2, P has method m1
+main{
+    P p = new P();
+    p.m1(); //ok
+    p.m2(); //Compilation error
+
+    C c = new C();
+    c.m1(); //ok
+    c.m2(); //ok
+
+    P p1 = new C();
+    p1.m1();//ok
+    p2.m2();// error
+
+    C c1 = new P();//Compilation error
+}
+
+why multiple inheritance now allowed with classed but supported for interface ?
+With classes, method definitions present, leads to ambiguity problem
+With Interface, post inheritance, definitions can be provide, no ambiguity
+
+Compositions vs Aggregation -
+Composition - strong association
+Aggregation is weak association of objects
+
+OVerloading vs Overriding -
+Overloading - methds in same cass, change in parameter types
+
+Overridding -Methods in different class with inheritance relationship
+Note: In overridding, if both parent and child class methods are static, this is actually method hiding not overriding
+
+Polymorphism
+Compile time polymorphism is - overloading
+Run time polymorphism is method overriding
+Ex: List<Integer> l = new ArrayList<>(); or new LinkedList<>():
+------------
+Coupling - degree of dependency beween 2 components
+Tightly coupled
+Loosely coupled
+
+------------
+Cohesion - well defined functionality for each component
+Good cohesion --> good maintainability and reusability of code
+
+-----------------
+super, this keywords -
+used to refer to super and current class instance memebers
+can use anywhere except static area
+can use any number of times
+
+super(), this - to call super and current class constructor
+only in 1st line of const
+
+--------------
+Singleton class - for a class if only 1 object creation is allowed
+ex- Runtime, BusinessDelegate, ServiceLocator
+
+custom singleton class
+
+class Test{
+
+private static Test t = new Test();
+
+private Test(){
+
+}
+
+public static Test getTest(){
+    return t;
+}
+}
+
+---------------
+
+Exception Handling - any unwanted event that disrupts flow of program
+--for any working thread (including main) a runtime stack and evey operation is stoed there
+-- each entry is called an activation record
+-- if the method where exception arises does not contain mechanism to handle it, controll goes to caller function. If no function in chain can handle excpetion, controll goes to main
+-- if main also doesn't hav e the capability to handle the exception, control goes to default excepion handler of JVM
+
+Types of Exception -
+Root Class --> Throwable
+1.1 Exception
+caused by program
+Types -
+Runtime Exception
+IO exception
+Servlet Exception
+Interrupted exception
+Remote Exception
+
+1.2 Error
+caused by system
+VM Error
+Asserttion Error
+
+All checked and unchecked exceptions are runtime exceptions. Checked - known like fileNotFoundException
+and Unchecked like Arithmetic exception
+Errors are unchecked exceptions
+
+Fully checked - if exception in base and all chil classes are checked
+Partially - if all classes are not checked
+
+order of execution of try catch
+try block-- if exception occurs then print contents of catch block and then print contents of finally block
+--> In catch blocks order of catch blocks is important - first child class exception and then parent class
+
+---------
+Final vs Finally vs Finalize
+final - modifier for class/methods/variables
+finally - block in try catch used to maintain code clean up
+finalize - method invoked by Garbage collector to destroy unused objects
+----------
+thow vs throws
+throw - explicit exception creation by handover to JVM. used to delegate responsibilty to caller
+Ex: throw new ArithmeticException
+throws - signify that an exception can be thrown. Only for checked exceptions
+public void getTest throws ArithmeticException(){}
+-----
+
+Customised Exception - user defined exception by extending RuntimeException
+----------
+Java 1.7 adv
+1. autocloseable interface introducted. Try with resources - helps close resources once used. Resources should be autocloseable
+try(BufferedReader br = new BufferedReader(new Test("abc.txt"))){
+
+}
+2. multi catch block - catch(FileNotFoundException| IOException e) - not here exceptions hsould have parent child relationship
+----------
+
+Collections -
+Collection Framework - contain several classes and interfaces to represent a group of individual objects as single entry
+Every collection by default implements serializable and clonable interface
+
+Collections(I) - interface
+--> List(I)
+======> ArrayList, LinkedList, Vector
+--> Set(I)
+======> HashSet --> LinkedHashSet, SortedSet(I) --> TreeSet, NavigableSet
+--> Queue(I)
+======> PriorityQueue, BlockingQueue--> PriorityBlcokingQueue, LinkedBlockingQueue
+
+
+--> Map - not child of Collection(I) but part of framework
+=====> sortedMap(I) --> NavigableMap --> TreeMap
+
+------
+Sorting
+-- Comparable(I) vs Comparator(I)
+---> Comparable (I) - compareTo method.... obj1.compareTo(obj2) | -ve if obj1 comes before obj2, +ve if obj1 comes after obj2, 0 if equal. Here obj1 is to be inserted to collection. default natural sorting order. java.lang package
+---> Comparator (I) - compare and equals method - rules are same . Implementation is to be provided only for compare method. Equals is available from object method. java.util package
+
+class MyComparator implements Comparator{
+    public int compare(Object o1, Object o2){
+        Integer i1 = (Integer)o1;
+        Integer i2 = (Integer)o2;
+        return i1.intValue()-i2.intValue();
+    }
+}
+
+--------
+
+Cursor -
+Enumerators(I) -- for legacy collections
+Iterator(I) - single direction cursor - next() and remove()
+
+Iterator i = l.iterator();
+
+while(i.hasNext()){
+    //next
+    //remove
+}
+
+ListIterator(I) - 2 way cursor - only for list objects
+ListIterator i = l.listIterator();
+
+while(i.hasNext()){
+    //hasNext
+    //next
+    //nextIndex
+    //hasPrevious
+    //previous
+    //previousIndex
+    //remove
+    //add
+    //set
+}
+
+----------------
+utilities -
+Collections -
+- sorting - Collections.sort()
+- searching - Collections.binarySearch(int i)
+- reversing - Collections.sort(l, Collections.reverseOrder()); Collections.reverse(l);
+Arrays -
+- Arrays.sort(int[] a)
+- Arrays.binarySearch(int a)
+- Arrays.asList()
+
+----------------
+
+Cache memory - used between primary (Fast but costly Memory) and secondary memory(Slow but Cheap). LinkedHashSet used.
+
+---------------
+
+== vs .equals
+ ---> == used for address/reference comparison
+ ---> .equals used for content comparison
+
+String s1 = "HELLO";
+String s2 = "HELLO";
+String s3 = new String("Hello");
+
+s1==s2 --> true
+s1 == s3 --> false
+s1.equals(s3) --> true
+
+--------------
+
+Concurrent Collections - are thread safe - dont throw concurrent modification exception
+- ConcurrentHashMap
+- CopyOnWriteArrayList
+- CopyOnWriteArraySet
+
+ConcurrentMap(I) - ConcurrentMap
+- put()
+- putIfAbsent(Object o, Object value)
+- remove()
+- replace(Object key, Object oldValue, Objct newValue)
+
+ConcurrentHashMap
+
+CopyOnWriteArrayList - creates a copy of array list for every update operation
+addIfAbsent()
+addAllAbsent()
+-------------
+
+Multi-Threading -
+Thread based multi-tasking - objective is to reduce the response time
+2 ways of creating threads
+- by extending thread class
+- by implementing runnable interface
+
+class MyThread extends Thread{
+    @Override
+    public void run(){
+        //
+    }
+}
+
+class MyThreadDemo{
+    main(){
+        MyThread t = new Thread(); //Thread Instantiation
+        t.start(); //Starting a new thread
+    }
+}
+
+class MyRunnable implements Runnable{
+    public void run(){
+        //
+    }
+}
+
+class MyThreadDemo2{
+    main(){
+        MyRunnable r = new MyRunnable();
+        Thread t = new Thread(r);
+        t.start(); //Starting a new thread
+    }
+}
+
+start() vs run()
+--> start() -a new thread is created. Register thread with thread scheduler of jvm. which is responsible for execution of run method
+--> run() - only execution. no thread creation. overloading allowed
+
+Thread Life cycle -
+
+NEW/START/RUN --> t.start()--> READY/RUNNABLE -->if process allocated resources by thread scheduler --> RUNNING---> completed process ---> DEAD
+
+IllegalStateException - if attempt to restart the thread after already started
+
+Class Hierarchy -
+
+Runnable(I) - java.lang package
+--> Thread (C) --> MyThread(C)
+--> MyRunnable(C)
+
+using runnable is better as we can still extend other class. If we extend thread class then sno other classes can be extended
+
+To get current thread name
+Thread.currentThread().Getname();
+
+Thread Priorities - execution on the basis of priority
+1-10
+min_priority --1
+norm_priority -- 5
+max_priority --10
+
+getPriority
+setPriority
+
+default priority = 5
+
+ways to prevent thread execution
+- yield - pause current thread execution to give chance to waiting threads
+- join - if thread t1 wants to wait for t2 before execution then t1 has to call - t2.join()
+- sleep - if we dont want to perform any operation for a particular time
+
+interrupt() - a thread can interrupt a sleeping thread
+
+SYNCHRONIZATION -
+
+
+-------------------
+

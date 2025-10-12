@@ -1,0 +1,38 @@
+What is TC ?
+TC != time taken to run the program
+TC is rate at which time taken inc. w.r.t. input size
+
+TC is calculated as Big O notation
+
+Example: for loop - if loop runs 5 times - at each step - increments and then checks and execute the braces --> then TC is O(15)
+
+Rules -
+1. Always compute TC in terms of Worst case scenario
+2. avoid constants
+3. avoid lower values
+
+Example for point 1:
+if(marks <25) print grade 'D'
+else if(marks <45) print grade 'C'
+else if(marks <65) print grade 'B'
+else print 'A'
+
+marks --> 10 check and print --> 2 operations
+70 --> 3 checks and then print --> 4 operations
+
+Example for point 2 & 3:
+
+O(4n^3+ 3*n^2+8) lets say n = 10^5
++8 does not have any significance if n is substituted ---> i.e. we dot consider constants
+
+adding 10^15 to 10^10 is of no significane so 10^10 can be ignored
+
+Space Complexity
+-- Auxiliar space (space need to solve the problem) + input space (space to store the input)
+-- Memory space that the program takes
+-- varies from machine to machine
+-- Big O notation used
+
+** Never do anything to input unless specifically mentioned its allowed to manipulate the data**
+
+In most interviews 1 second ~ 10^8 operation

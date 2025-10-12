@@ -1,6 +1,8 @@
 package com.example.practice.code.arrays;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 /**
  * Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
@@ -63,5 +65,32 @@ public class TwoSum {
         return result;
 
     }
+
+/*
+    public static ArrayList<Pair<Integer, Integer>> twoSum(ArrayList<Integer> arr, int target, int n) {
+
+        ArrayList<Pair<Integer, Integer>> l = new ArrayList<>();
+
+        Collections.sort(arr);
+
+        int i=0;
+        int j=n-1;
+
+        while(i<n && j>=0 && i<j){
+            int sum = arr.get(i)+arr.get(j);
+
+            if(sum==target){
+                l.add(new Pair(arr.get(i),arr.get(j)));
+                i++;
+                j--;
+            }else if(sum<target){
+                i++;
+            }else{
+                j--;
+            }
+        }
+
+        return l;
+    }*/
 
 }

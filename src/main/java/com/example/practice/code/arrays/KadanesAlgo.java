@@ -19,11 +19,12 @@ public class KadanesAlgo {
 
         while(i<a.length){
             sum = sum + a[i];
-            if(sum>max){
-                max = sum;
-            }
+
             if(sum<0){
                 sum = 0;
+            }
+            if(sum>max){
+                max = sum;
             }
             i++;
         }

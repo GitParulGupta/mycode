@@ -19,8 +19,11 @@ Pair class - import javafx.util.Pair;
 Pair<Integer, Integer> pair = new Pair<>(1, 2);
 
 -- Maths
-Integer.MIN_VALUE
-Integer.MAX_VALUE
+Integer.MIN_VALUE --> -2^31
+Integer.MAX_VALUE --> 2^31 -1
+Char a -->97, z --> 122, A --> 65, Z --> 91
+character range --> 0 --> 65535
+
 Math.min()
 Math.max()
 --The logarithmic base 10 of a positive integers gives the number of digits in n. We add 1 to the result to ensure that the count is correct even for numbers that are powers of 10.
@@ -46,10 +49,11 @@ return (int)(log10(n)+1); //Math.log10
 2. get(index)
 3. getFirst()
 4. getLast()
-5. remove()
+5. remove(), removeFirst(), removeLast()
 6. size()
 7. Create new list => List<Integer> l = List.of(input1, input2);
 7.1. Create a new List from an existing List - List<Integer> l = new ArrayList<>(existingList);
+7.2. To create a synchronized list - List<Integer> l1 = Collections.synchronized(l);
 8. List<Integer> l = new ArrayList<Integer>
 9. List to Set in java 8 - l.stream().collect(Collectors.toSet());
 10. List to Map in java 8 - l.stream().collect(Collectors.toMap(Function.identity(), Function.identity()));
@@ -121,11 +125,42 @@ return (int)(log10(n)+1); //Math.log10
 2. HashMap - A data structure that maps keys to values, allowing for fast retrieval of values based on their keys. -> nlogn TC
     - Example: HashMap<Integer, Integer> map = new HashMap<>();
     - Operations: put(key, value), get(key), remove(key), containsKey(key), size(), isEmpty(), clear().
+    - Operations: putAll(map), containsKey(key), containsValue(value), Set keySet(), Collection values(), Set entrySet()
+    - not thread safe. hashtable is thread safe
+    - Collections.synchronized(m)
     - Iterating over a HashMap: for (Map.Entry<Integer, Integer> entry : map.entrySet()) { ... }
+2.1. Identity Hashmap - same as hashmap. only difference is == used for key identification
+2.2. TreeMap -- sortedMap implementation. sorting is based on keys
+    - firstKey()
+    - lastkey()
+    - headMap(Object o)
+    - tailmap(Object o)
+    - subMap(Object o)
+    --- baceknd ds - Red black tree
+2.3. Navigable Map -
+    - floorKey(e)
+    - lowerKey(e)
+    - ceilingKey(e)
+    - higherKey(e)
+    - pollFirstEntry()
+    - pollLastEntry()
+    - descendingMap()
 3. HashSet - A data structure that stores unique elements, allowing for fast membership testing and insertion. -> nlogn TC
     - Example: HashSet<Integer> set = new HashSet<>();
     - Operations: add(element), remove(element), contains(element), size(), isEmpty(), clear().
     - Iterating over a HashSet: for (Integer element : set) { ... }
+3.1 Sorted hashSet - implementation is TreeSet - elements are preserved according to some sorted order.
+    - first(), last(), headSet(Object o) --> elements before o, tailSet(Object o)--elements >= o, subset(Object o1, Object o2) -- including o1 excluding o2
+    - null not allowed
+    - underlying ds is TreeMap
+3.2. Navigable Set - child interface of sorted set
+    - floor(Object e) - returns highest elements less than or equal to e
+    - lower(Object e) - returns highest elements less than e
+    - ceiling(Object e) - returns highest elements greater than or equal to e
+    - higher(Object e) - returns highest elements greater than e
+    - pollFirst() - remove and return the first element
+    - pollLast() - remove and return the last element
+    - descendingSet() - returns navigable set in descending order
 4. Character Hashing - Used to map characters to their ASCII values or to count occurrences of characters in a string.
     - Example: int[] hash = new int[256]; // for ASCII characters - 'a'--> 97 to 'z' --> 122 & 'A' --> 65 to 'Z' --> 90
     - Lets assume array has only lowercase characters, then we can use a smaller array of size 26.
@@ -137,8 +172,17 @@ return (int)(log10(n)+1); //Math.log10
     - Division method: hash(key) = key % size_of_array - if still collision occurs, use linear probing or chaining.
     - Multiplication method: hash(key) = floor(size_of_array * (key * A % 1))
     - Universal hashing: Use a random function to map keys to indices in the array.
+6. HashTable - keys are hashcode of elements
+    - synchronized
+    - best for search operations
 
-
+-- Queue
+- FIFO
+- offer(Object o)
+- poll()
+- remove() - if queue is empty - poll returns null vs remove returns NoSuchElementException
+- peek() - top of set. Returns null if empty
+- element() - returns top of set. noSuchElementException if empty
 
 -- Heap
 - For question related to heap, implementation using stack. Look for keywords K and smallest/largest
@@ -280,3 +324,13 @@ return (int)(log10(n)+1); //Math.log10
     9. Kruskal's Algorithm: Finds the minimum spanning tree (MST) of a weighted undirected graph by sorting all edges and adding them one by one, ensuring no cycles are formed using the union-find data structure.
         - Time Complexity: O(E log E) or O(E log V) using union-find.
         - Space Complexity: O(V) for the parent and rank arrays in union-find.
+
+Minimum Spanning Tree -
+- Spanning Tree - A tree in which we have N nodes and N-1 edges and all nodes are reachable from each other
+- MST - Spanning tree which has minmum sum of all the edges
+- refer -> mst.png for mst example
+- ways to find mst -
+    - Prim's algorithm
+    - Kruskal's algorithm
+- Disjoint Set - usually used in dynamic graphs - which keep on changing
+-
