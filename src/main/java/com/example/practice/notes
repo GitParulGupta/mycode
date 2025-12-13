@@ -42,7 +42,8 @@ return (int)(log10(n)+1); //Math.log10
 -- Important operations arrays -
 1. Reverse array - Collections.reverse(Arrays.asList(a)); or ArrayUtils.reverse(array);
 2. To print elements of array --Arrays.toString(array)
-3.
+3. Arrays.sort(array);
+4. Arrays.fill(array, x);//x is the value to be filled
 
 -- Important operation Lists -
 1. add(int x)
@@ -51,10 +52,10 @@ return (int)(log10(n)+1); //Math.log10
 4. getLast()
 5. remove(), removeFirst(), removeLast()
 6. size()
-7. Create new list => List<Integer> l = List.of(input1, input2);
+7. Create new list => List<Integer> l = List.of(input1, input2); //unmodifiable list
 7.1. Create a new List from an existing List - List<Integer> l = new ArrayList<>(existingList);
 7.2. To create a synchronized list - List<Integer> l1 = Collections.synchronized(l);
-8. List<Integer> l = new ArrayList<Integer>
+8. List<Integer> l = new ArrayList<>();
 9. List to Set in java 8 - l.stream().collect(Collectors.toSet());
 10. List to Map in java 8 - l.stream().collect(Collectors.toMap(Function.identity(), Function.identity()));
 11. List to String in java 8 - l.stream().map(String::valueOf).collect(Collectors.joining(", "));
@@ -185,7 +186,7 @@ return (int)(log10(n)+1); //Math.log10
 - element() - returns top of set. noSuchElementException if empty
 
 -- Heap
-- For question related to heap, implementation using stack. Look for keywords K and smallest/largest
+- For question related to heap, implementation using priorityQueue. Look for keywords K and smallest/largest
 - 2 types of heaps:
     - Min Heap - The smallest element is at the top. K+largest in keywords
     - Max Heap - The largest element is at top. K + smallest in keywords
@@ -238,7 +239,7 @@ return (int)(log10(n)+1); //Math.log10
 - Entire left sub tree should be a BST and entire right sub tree should be a BST
 - If duplicates are allowed condition is modified to left subtree contains nodes with values less than or equal to the node's value && right subtree contains nodes with values greater than or equal to the node's value.
    - In ideal case nodes are not duplicates
-- Height of BST is O(log n) in average case and O(n) in worst case (when the tree becomes skewed/degenrate trees).
+- Height of BST is O(log n) in average case and O(n) in worst case (when the tree becomes skewed/degenerate trees).
 - Common operations:
     - Search: O(h) where h is the height of the tree.
     - Insertion: O(h)
@@ -327,7 +328,7 @@ return (int)(log10(n)+1); //Math.log10
 
 Minimum Spanning Tree -
 - Spanning Tree - A tree in which we have N nodes and N-1 edges and all nodes are reachable from each other
-- MST - Spanning tree which has minmum sum of all the edges
+- MST - Spanning tree which has minimum sum of all the edges
 - refer -> mst.png for mst example
 - ways to find mst -
     - Prim's algorithm

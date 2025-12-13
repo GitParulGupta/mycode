@@ -36,6 +36,26 @@ public class RotateArray {
         return a;
     }
 
+    public int[] rotateLeft2(int[] a, int d){
+
+        int[] temp = a.clone();
+        int n = a.length;
+        for(int i=0;i<n;i++){
+            a[(i+(n-d))%n]=temp[i];
+        }
+        return a;
+    }
+
+    public int[] rotateRight2(int[] a, int d){
+
+        int[] temp = a.clone();
+        int n = a.length;
+        for(int i=0;i<n;i++){
+            a[(i+d)%n] = temp[i];
+        }
+        return a;
+    }
+
     public int[] rotateRight(int[] a, int d){
 
         d = d%a.length;
@@ -65,15 +85,18 @@ public class RotateArray {
 
         RotateArray r = new RotateArray();
 
-        System.out.println(Arrays.toString(r.rotateLeft(leftRotateInput, 3)));
-        System.out.println(Arrays.toString(r.rotateRight(rightRotateInput, 3)));
+        //System.out.println(Arrays.toString(r.rotateLeft(leftRotateInput, 3)));
+        //System.out.println(Arrays.toString(r.rotateRight(rightRotateInput, 3)));
 
         int[] leftRotateInput2 = {1,2,3,4,5,6,7};
+        int[] leftRotateInput3 = {1,2,3,4,5,6,7};
 
         int[] rightRotateInput2 = {1,2,3,4,5,6,7};
 
-        System.out.println(Arrays.toString(r.rotateLeft(leftRotateInput2, 6)));
-        System.out.println(Arrays.toString(r.rotateRight(rightRotateInput2, 6)));
+        //System.out.println(Arrays.toString(r.rotateLeft(leftRotateInput2, 6)));
+        System.out.println(Arrays.toString(r.rotateLeft2(leftRotateInput3, 3)));
+        System.out.println(Arrays.toString(r.rotateRight2(rightRotateInput2, 5)));
+        //System.out.println(Arrays.toString(r.rotateRight(rightRotateInput2, 6)));
     }
 
 }

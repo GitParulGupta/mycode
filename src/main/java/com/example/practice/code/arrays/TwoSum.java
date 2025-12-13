@@ -1,8 +1,6 @@
 package com.example.practice.code.arrays;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.*;
 
 /**
  * Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
@@ -25,72 +23,30 @@ import java.util.Collections;
  */
 public class TwoSum {
 
-
-    public int[] twoSumBest(int[] nums, int target) {
-
-        int[] sortedNums = new int[nums.length];
-
-        System.arraycopy(nums, 0, sortedNums, 0, nums.length);
-
-        Arrays.sort(sortedNums);
-
-        int left = 0;
-        int right = sortedNums.length-1;
-
-        while(left<right){
-            if(sortedNums[left]+sortedNums[right]==target){
-                break;
-            }else if(sortedNums[left]+sortedNums[right]<target){
-                left++;
-            }else{
-                right--;
-            }
-        }
-
-        int[] result = {-1,-1};
+    public int[] solution(int[] nums, int target){
+        Map<Integer,Integer> map = new HashMap<>();
 
         for(int i=0;i<nums.length;i++){
-            if(nums[i]==sortedNums[left]){
-                result[0] = i;
-                break;
+            int complimentary = target - nums[i];
+
+            if(map.containsKey(complimentary)){
+                return new int[]{map.get(complimentary),i};
             }
+
+            map.put(nums[i],i);
         }
 
-        for(int i=0;i<nums.length;i++){
-            if(nums[i]==sortedNums[right] && i!=result[0]){
-                result[1] = i;
-                break;
-            }
-        }
-        return result;
-
+        return new int[]{-1,-1};
     }
 
-/*
-    public static ArrayList<Pair<Integer, Integer>> twoSum(ArrayList<Integer> arr, int target, int n) {
+    public static void main(String[] args) {
 
-        ArrayList<Pair<Integer, Integer>> l = new ArrayList<>();
+        TwoSum obj = new TwoSum();
 
-        Collections.sort(arr);
-
-        int i=0;
-        int j=n-1;
-
-        while(i<n && j>=0 && i<j){
-            int sum = arr.get(i)+arr.get(j);
-
-            if(sum==target){
-                l.add(new Pair(arr.get(i),arr.get(j)));
-                i++;
-                j--;
-            }else if(sum<target){
-                i++;
-            }else{
-                j--;
-            }
-        }
-
-        return l;
-    }*/
+        int[] nums = {2,7,11,15}; int target = 9;
+        System.out.println(Arrays.toString(obj.solution(nums,target)));
+        int[] nums1 = {3,3}; int target1 = 6;
+        System.out.println(Arrays.toString(obj.solution(nums1,target1)));
+    }
 
 }

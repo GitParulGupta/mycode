@@ -25,7 +25,6 @@ n= 20 upperBound = 6
 O(log to base2 n)
 
 Another category of examples -
-Binary Search on answers
+Binary Search on answers - very very important
 Example: Sqrt using BS
-
 
