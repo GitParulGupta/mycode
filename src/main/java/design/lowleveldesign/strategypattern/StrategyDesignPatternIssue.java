@@ -1,4 +1,4 @@
-package design.lowleveldesign;
+package design.lowleveldesign.strategypattern;
 
 /**
  * Sportsvehicle and OffRoadVehicle --> both override drive method of base class but have same code.
