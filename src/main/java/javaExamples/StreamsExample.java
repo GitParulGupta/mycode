@@ -1,4 +1,4 @@
-package javaFeatures;
+package javaExamples;
 
 import java.util.*;
 import java.util.stream.Collectors;
