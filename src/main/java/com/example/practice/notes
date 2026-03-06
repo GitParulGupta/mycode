@@ -28,7 +28,7 @@ Math.min()
 Math.max()
 --The logarithmic base 10 of a positive integers gives the number of digits in n. We add 1 to the result to ensure that the count is correct even for numbers that are powers of 10.
 return (int)(log10(n)+1); //Math.log10
-
+String binaryString = Integer.toBinaryString(decimalNumber);
 
 -- Important search algos
 1. Linear Search
@@ -60,7 +60,8 @@ return (int)(log10(n)+1); //Math.log10
 10. List to Map in java 8 - l.stream().collect(Collectors.toMap(Function.identity(), Function.identity()));
 11. List to String in java 8 - l.stream().map(String::valueOf).collect(Collectors.joining(", "));
 12. iterate over list in java 8 - l.forEach(System.out::println);
-13. List to array in java 8 - l.toArray(new Integer[0]);
+13. List to array in java 8 - l.toArray(new Integer[0]); // creates array of Integer
+13.1. List to int[] ==> l.stream().mapToInt(Integer::intValue).toArray();
 14. iterator Iterator<Integer> i = elementList.iterator();
 12. Sort list in java 8 - l.sort(Comparator.naturalOrder());
 13. Sort list of lists in java 8 - List<List<Integer>> l=l1.stream().sorted(new Comparator<List<Integer>>() {
@@ -82,7 +83,7 @@ return (int)(log10(n)+1); //Math.log10
 1. String to char array - char[] c = s.toCharArray();
 2. String to int - Integer.parseInt(s);
 3. Check if string is palindrome - s.equals(new StringBuilder(s).reverse().toString());
-4. String to List - Arrays.asList(s.split(","));
+4. String to List - Arrays.asList(s.split("[\\s,]+"));//include multi fields
 5. String to List in java 8 - Arrays.stream(s.split(",")).collect(Collectors.toList());
 6. Check if String is empty -word.isEmpty()
 7. String to lower or upper case - word.toLowerCase() or word.toUpperCase()
@@ -99,6 +100,10 @@ return (int)(log10(n)+1); //Math.log10
     -  In sliding window, if any char hash map is required, try to go by hash[26] array s.t. any hash[s.charAt(i)-'A]
 4. 2 pointer
 
+
+Regex handling in java (Pending)
+
+
 -- Recursion
 1. When a function calls itself until specified condition is met, it is called recursion. Each function call creates a new stack frame, and the function continues to execute until it reaches a base case or an error occurs.
    - Base case is the condition that stops the recursion.
@@ -111,6 +116,8 @@ return (int)(log10(n)+1); //Math.log10
    - Parameterized recursion: where the function takes parameters and modifies them in each recursive call.
     - Non-parameterized recursion: function keeps track to state using return values.
     Example: Sum of first N natural numbers.
+6. Induction --> Base Condition ---> Hypothesis -- useful for tree and linkedList questions
+
 
 -- Hashing
 1. Used to map counts of elements in an array or list.

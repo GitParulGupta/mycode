@@ -18,7 +18,8 @@ public class gcd {
     }
 
     //Euclidien algorithm
-    public int solitionOptimal(int n1, int n2){
+    // gcd(a,b)=gcd(a-b,b) where a>b
+    public int solutionOptimal(int n1, int n2){
         while(n1>0 && n2>0){
             if(n1>n2) n1 = n1%n2;
             else n2=n2%n1;
@@ -28,4 +29,19 @@ public class gcd {
         else return n1;
     }
 
+
+    public int solutionOptimal2(int n1,int n2){
+        if(n1==0) return n2;
+        if(n2==0) return n1;
+
+        if(n1>n2 ) return solutionOptimal2(n1-n2,n2);
+        else return solutionOptimal(n2-n1,n1);
+    }
+
+    public static void main(String[] args) {
+        int n1 = 20; int n2 = 15;
+
+        gcd gcd = new gcd();
+        System.out.println(gcd.solutionOptimal(n1,n2));
+    }
 }
