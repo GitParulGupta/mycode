@@ -25,7 +25,9 @@ public class CompletableFutureDemo {
         CompletableFuture<String> obj3 = CompletableFuture.supplyAsync(() -> {
             System.out.println(Thread.currentThread().getName());
             return "task3 completed";
-        },executor).thenApplyAsync(str -> str + Thread.currentThread().getName(),executor);
+        },executor).thenApplyAsync(str -> str + Thread.currentThread().getName(),executor).exceptionally((ex)->{
+            throw new RuntimeException(ex);
+        });
 
         System.out.println(obj3.get());
 

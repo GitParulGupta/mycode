@@ -1,4 +1,4 @@
-package com.example.practice.code.arrays;
+package com.example.practice.code.arrays.hard.important;
 
 /**
  * You have been given stock values/prices for N number of days. Every i-th day signifies the price of a stock on that day. Your task is to find the maximum profit which you can make by buying and selling the stocks.

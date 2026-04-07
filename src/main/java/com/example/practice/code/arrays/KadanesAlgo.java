@@ -45,7 +45,6 @@ public class KadanesAlgo {
         return maxSum;
     }
 
-    //Note that this solution fails for all-negatives array
     public void printMaximumSubarraySum(int[] a){
         long sum = 0;
         long max = Long.MIN_VALUE;
@@ -56,7 +55,7 @@ public class KadanesAlgo {
         int maxE = -1;
 
         while(i<a.length){
-            if(sum==0){
+            if(sum==0){ // starting a new sub array
                 start = i;
             }
             sum = sum + a[i];
@@ -76,6 +75,7 @@ public class KadanesAlgo {
                 System.out.print(a[x]);
                 System.out.print("  ");
             }
+            System.out.println("  ");
         }
     }
 
@@ -111,6 +111,22 @@ public class KadanesAlgo {
         return new int[]{maxStart, maxEnd, maxSum};
     }
 
+    //BruteForce - find all the subarrays and find the sum
+    public int bruteForce(int[] nums){
+
+        int maxSum = Integer.MIN_VALUE;
+        int sum = 0;
+        for(int i= 0; i < nums.length; i++){
+            sum = 0;
+            for(int j = i; j < nums.length; j++){
+                sum=sum+nums[j];
+                maxSum = Math.max(maxSum, sum);
+            }
+        }
+
+        return maxSum;
+    }
+
 
 
     public static void main(String[] args) {
@@ -118,6 +134,12 @@ public class KadanesAlgo {
         KadanesAlgo obj = new KadanesAlgo();
         System.out.println(obj.maximumSubarraySum(a));
         obj.printMaximumSubarraySum(a);
+
+        System.out.println(obj.bruteForce(a));
+
+        int[] a1 = {-2,-3,-4,-7};
+        KadanesAlgo obj1 = new KadanesAlgo();
+        obj1.printMaximumSubarraySum(a1);
     }
 
 }

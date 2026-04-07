@@ -1,4 +1,4 @@
-package com.example.practice.code.arrays;
+package com.example.practice.code.arrays.moderate;
 
 import java.util.HashMap;
 import java.util.Map;

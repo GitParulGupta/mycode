@@ -13,7 +13,7 @@ import java.util.*;
  *  Optimal Solution: Use a HashSet to store elements and check for consecutive elements in O(1) time.
  *  TC: O(N) SC: O(N)
  */
-public class LongestConsecutiveSubsequence {
+public class LongestConsecutiveSequence {
 
     public int betterSolution(int[] a){
 
@@ -73,7 +73,7 @@ public class LongestConsecutiveSubsequence {
     public static void main(String[] args) {
         int[] a = {100,4,2,101,3,1};
 
-        LongestConsecutiveSubsequence obj = new LongestConsecutiveSubsequence();
+        LongestConsecutiveSequence obj = new LongestConsecutiveSequence();
         System.out.println(obj.betterSolution(a));
         System.out.println(obj.optimalSolution(a));
 

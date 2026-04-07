@@ -1,5 +1,7 @@
 package javaExamples;
 
+import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -100,9 +102,10 @@ public class StreamsExample {
 
         // Convert list to map (string → length)
         System.out.println("\nConvert list to map (string → length)");
+        System.out.println(stringArray.stream().collect(Collectors.groupingBy(word->word, Collectors.counting()))); // frequency of each word - Map<String,Integer>
         System.out.println(stringArray.stream().collect(Collectors.toMap(word->word,String::length)));
 
-        // Find 3rd largest number
+        // Find 5th largest number
         System.out.println("5rd Largest: "+numArray.stream().sorted(Collections.reverseOrder()).skip(4).findFirst());
 
         // Detect palindromes in a list

@@ -1,5 +1,6 @@
 package com.example.practice.code.arrays;
 
+import javax.swing.text.html.parser.Entity;
 import java.util.*;
 
 /**
@@ -17,33 +18,27 @@ public class TopKFrequentElements {
 
     public int[] solution (int[] nums, int k){
 
-        Map<Integer,ElementFreq> freqmap = new HashMap();
+       Map<Integer,Integer> map = new TreeMap<>();
+       for(int i:nums){
+           map.put(i,map.getOrDefault(i,0)+1);
+       }
 
-        for(int i:nums){
-            if(freqmap.containsKey(i)){
-                freqmap.compute(i, (k1, e) -> new ElementFreq(i, e.getFreq() + 1));
-            }else{
-                freqmap.put(i,new ElementFreq(i,1));
-            }
-        }
+       List<Map.Entry<Integer,Integer>> list = map.entrySet().stream().sorted(new Comparator<Map.Entry<Integer, Integer>>() {
+           @Override
+           public int compare(Map.Entry<Integer, Integer> o1, Map.Entry<Integer, Integer> o2) {
+               return o2.getValue().compareTo(o1.getValue());
+           }
+       }).toList();
 
-        List<ElementFreq> l = freqmap.values().stream().sorted(new Comparator<ElementFreq>() {
-            @Override
-            public int compare(ElementFreq o1, ElementFreq o2) {
-                return o2.getFreq()-o1.getFreq();
-            }
-        }).toList();
+       int[] result = new int[k];
 
-        int i = 0;
+       int i= 0;
 
-        int[] result = new int[k];
-
-        while(i<k){
-            result[i]=l.get(i).getValue();
-            i++;
-        }
-
-        return result;
+       while(i<k){
+           result[i] = list.get(i).getKey();
+           i++;
+       }
+       return result;
     }
 
     public static void main(String[] args) {

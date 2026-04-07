@@ -44,3 +44,12 @@ final class Rectangle implements Shape{
         return 0;
     }
 }
+
+/*
+final class Square implements Shape{
+
+    @Override
+    public double area() {
+        return 0;
+    }
+}*/
